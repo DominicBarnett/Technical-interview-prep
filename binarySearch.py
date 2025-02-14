@@ -33,14 +33,23 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        # set pointers
         l,r = 0, len(nums) - 1
-
+        # while left pointer is less than right pointer
         while l <= r:
+            # midpoint = (left index + right index) ÷ 2
+            # finding the midpoint of the array
             m = (l + r) // 2
+            # if the value of the midpoint is greater than the target
             if nums[m] > target:
+                # move the right pointer one index to the left of the midpoint
                 r = m - 1
+            # if the value of the midpoint is less than the target
             elif nums[m] < target:
+                # move the left pointer one index to the right of the midpoint
                 l = m + 1
             else:
+                # if the midpoint value == target return m
                 return m
+        # if the target wasn't found return -1
         return -1
